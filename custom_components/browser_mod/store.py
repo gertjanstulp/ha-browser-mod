@@ -1,6 +1,8 @@
 import logging
 import attr
 
+from homeassistant.helpers.storage import Store
+
 STORAGE_VERSION = 1
 STORAGE_KEY = "browser_mod.storage"
 
@@ -91,7 +93,8 @@ class ConfigStoreData:
 
 class BrowserModStore:
     def __init__(self, hass):
-        self.store = hass.helpers.storage.Store(STORAGE_VERSION, STORAGE_KEY)
+        # self.store = hass.helpers.storage.Store(STORAGE_VERSION, STORAGE_KEY)
+        self.store = Store(STORAGE_VERSION, STORAGE_KEY)
         self.listeners = []
         self.data = None
         self.dirty = False

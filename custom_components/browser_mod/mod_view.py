@@ -1,4 +1,5 @@
 from homeassistant.components.frontend import add_extra_js_url
+from homeassistant.components import frontend
 
 from .const import FRONTEND_SCRIPT_URL, SETTINGS_PANEL_URL
 
@@ -21,7 +22,8 @@ async def async_setup_view(hass):
         SETTINGS_PANEL_URL,
         hass.config.path("custom_components/browser_mod/browser_mod_panel.js"),
     )
-    hass.components.frontend.async_register_built_in_panel(
+
+    frontend.async_register_built_in_panel(
         component_name="custom",
         sidebar_title="Browser Mod",
         sidebar_icon="mdi:server",
